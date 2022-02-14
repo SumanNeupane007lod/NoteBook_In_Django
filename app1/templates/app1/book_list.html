@@ -1,0 +1,41 @@
+	{% extends 'app1/base.html'%}
+
+{%block content%}
+<body>
+<h1>ALL NOTES</h1>
+<table class="table md-0">
+    <thead>
+        <tr>
+            <th>COVER</th>
+            <th>TITLE</th>
+            <th>AUTHOR</th>
+            <th>DOWNLOAD</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for note in notes %}
+        <tr>
+            <td>
+                {% if note.coverimage%}
+                <img src="{{note.coverimage.url}}" alt="{{note.title}}" style="width:50px">
+                {% else%}
+                <span class="text-muted">No cover</span>
+                {% endif%}
+            </td>
+            <td> {{note.title}}</td>
+            <td> {{note.author}}</td>
+            <td>
+            <a href="{{note.pdf.url}}" class="btn btn-primary btn-sm" target="_blank">
+                DOWNLOAD
+            </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+</body>
+</html> 
+{% endblock %}
